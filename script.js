@@ -1,15 +1,28 @@
-var search_box = document.getElementById("search_box");
-var search_btn = document.getElementById("search_btn");
+let search_box = document.getElementById("search_box");
+let search_btn = document.getElementById("search_btn");
+let loader = document.querySelector(".loader");
 
-search_btn.onclick = function(event){
+
+search_btn.onclick = function(event) {
     event.preventDefault();
-if(search_box.value != ""){
-	var search_result = "https://www.google.com/search?q="+search_box.value;
-	window.location.href = search_result;
-	return false;
-}
-}
+    if (search_box.value !== "") {
+        loader.style.display = "block";
 
+        let query = search_box.value;
+        if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
+
+            
+            if (!query.startsWith('http://') && !query.startsWith('https://')) {
+                query = 'https://' + query; 
+            }
+            window.location.href = query;
+        } else {
+            let search_result = "https://www.google.com/search?q=" + search_box.value;
+            window.location.href = search_result;
+        }
+        search_box.value = "";
+    }
+}
 function loadShortcuts() {
     const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
     const allShortcutContainer = document.querySelector("#all_shortcut_icons");
