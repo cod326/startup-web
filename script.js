@@ -2,7 +2,6 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
-// Hide the loader when the page loads
 window.onload = function() {
     loader.style.display = "none";
 };
@@ -10,7 +9,7 @@ window.onload = function() {
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
-        loader.style.display = "block"; // Show loader when search button is clicked
+        loader.style.display = "block";
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
@@ -23,6 +22,10 @@ search_btn.onclick = function(event) {
             window.location.href = search_result;
         }
         search_box.value = "";
+
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
     }
 };
 
