@@ -22,8 +22,6 @@ search_btn.onclick = function(event) {
         }
         search_box.value = "";
     }
-	{
-        loader.style.display = "none";
 }
 function loadShortcuts() {
     const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
