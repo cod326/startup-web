@@ -82,6 +82,7 @@ text-align: center;
     padding-top: 200px;
     color:white;
     font-size: 25px;
+    z-index:10000;
     display: none;
 }
 
