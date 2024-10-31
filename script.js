@@ -2,16 +2,18 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
+// Hide the loader when the page loads
+window.onload = function() {
+    loader.style.display = "none";
+};
 
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
-        loader.style.display = "block";
+        loader.style.display = "block"; // Show loader when search button is clicked
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
-
-            
             if (!query.startsWith('http://') && !query.startsWith('https://')) {
                 query = 'https://' + query; 
             }
@@ -22,7 +24,8 @@ search_btn.onclick = function(event) {
         }
         search_box.value = "";
     }
-}
+};
+
 function loadShortcuts() {
     const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
     const allShortcutContainer = document.querySelector("#all_shortcut_icons");
@@ -64,29 +67,29 @@ function shortcut_btn() {
         shortcutName.value = "";
         shortcutUrl.value = "";
     }
-	add_btn.onclick = () => {
-		const name = shortcutName.value.trim();
-		const url = shortcutUrl.value.trim();
-	
-		if (!name || !url) {
-			alert("Please fill in both fields.");
-			return;
-		}
-	
-		const newShortcut = { name: name, url: url };
-		
-		const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
-		shortcuts.push(newShortcut);
-		saveShortcuts(shortcuts);
-		
-		loadShortcuts();
-		bg.style.display = "none";
-		add_link_box.style.display = "none";
-	
-		shortcutName.value = '';
-		shortcutUrl.value = '';
-	}
-	
+
+    add_btn.onclick = () => {
+        const name = shortcutName.value.trim();
+        const url = shortcutUrl.value.trim();
+
+        if (!name || !url) {
+            alert("Please fill in both fields.");
+            return;
+        }
+
+        const newShortcut = { name: name, url: url };
+        
+        const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+        shortcuts.push(newShortcut);
+        saveShortcuts(shortcuts);
+        
+        loadShortcuts();
+        bg.style.display = "none";
+        add_link_box.style.display = "none";
+
+        shortcutName.value = '';
+        shortcutUrl.value = '';
+    }
 
     allShortcutContainer.addEventListener('contextmenu', function(event) {
         const shortcutElement = event.target.closest('.shortcut1');
@@ -102,7 +105,6 @@ function shortcut_btn() {
             saveShortcuts(updatedShortcuts);
         }
     });
-	
 }
 
 shortcut_btn();
