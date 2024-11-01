@@ -23,9 +23,6 @@ search_btn.onclick = function(event) {
         }
         search_box.value = "";
 
-        setTimeout(() => {
-            location.reload();
-        }, 1);
     }
 };
 
