@@ -13,7 +13,7 @@ search_btn.onclick = function(event) {
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
-            if (!query.startsWith('http://') && !query.startsWith('https://')) {
+            if (!query.startsWith('http://') || !query.startsWith('https://')) {
                 query = 'https://' + query; 
             }
             window.location.href = query;
@@ -25,7 +25,7 @@ search_btn.onclick = function(event) {
 
         setTimeout(() => {
             location.reload();
-        }, 1000);
+        }, 1);
     }
 };
 
