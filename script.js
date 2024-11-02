@@ -27,7 +27,7 @@ search_btn.onclick = function(event) {
         // Refresh the page after all actions are done
         setTimeout(() => {
             location.reload(); // Refresh the page
-        }, 1); // Optional: Delay for 1 second to allow the user to see the loader
+        }, 1000); // Optional: Delay for 1 second to allow the user to see the loader
     }
 };
 
