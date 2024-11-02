@@ -5,9 +5,6 @@ let loader = document.querySelector(".loader");
 // Hide the loader when the page loads
 window.onload = function() {
     loader.style.display = "none";
-
-    // Automatically refresh the page
-    location.reload(); // This will cause an infinite loop of refreshes
 };
 
 search_btn.onclick = function(event) {
@@ -20,14 +17,17 @@ search_btn.onclick = function(event) {
             if (!query.startsWith('http://') && !query.startsWith('https://')) {
                 query = 'https://' + query; 
             }
-            // Redirect to the URL
             window.location.href = query;
         } else {
-            let search_result = "https://www.google.com/search?q=" + encodeURIComponent(search_box.value);
-            // Redirect to the search result
+            let search_result = "https://www.google.com/search?q=" + search_box.value;
             window.location.href = search_result;
         }
-        search_box.value = ""; // Clear the search box
+        search_box.value = "";
+
+        // Refresh the page after all actions are done
+        setTimeout(() => {
+            location.reload(); // Refresh the page
+        }, 1); // Optional: Delay for 1 second to allow the user to see the loader
     }
 };
 
