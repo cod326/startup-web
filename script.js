@@ -5,6 +5,12 @@ let loader = document.querySelector(".loader");
 // Hide the loader when the page loads
 window.onload = function() {
     loader.style.display = "none";
+
+    // Check if the page has been refreshed in this session
+    if (!sessionStorage.getItem('hasRefreshed')) {
+        sessionStorage.setItem('hasRefreshed', 'true'); // Set a flag in session storage
+        window.location.reload(); // Refresh the page
+    }
 };
 
 search_btn.onclick = function(event) {
