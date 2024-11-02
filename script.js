@@ -17,17 +17,14 @@ search_btn.onclick = function(event) {
             if (!query.startsWith('http://') && !query.startsWith('https://')) {
                 query = 'https://' + query; 
             }
+            // Redirect to the URL
             window.location.href = query;
         } else {
-            let search_result = "https://www.google.com/search?q=" + search_box.value;
+            let search_result = "https://www.google.com/search?q=" + encodeURIComponent(search_box.value);
+            // Redirect to the search result
             window.location.href = search_result;
         }
-        search_box.value = "";
-
-        // Refresh the page after all actions are done
-        setTimeout(() => {
-            location.reload(); // Refresh the page
-        }, 1000); // Optional: Delay for 1 second to allow the user to see the loader
+        search_box.value = ""; // Clear the search box
     }
 };
 
