@@ -2,6 +2,7 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
+// Hide the loader when the page loads
 window.onload = function() {
     loader.style.display = "none";
 };
@@ -9,20 +10,21 @@ window.onload = function() {
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
-        loader.style.display = "block";
+        loader.style.display = "block"; // Show loader when search button is clicked
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
-            if (!query.startsWith('http://') || !query.startsWith('https://')) {
+            if (!query.startsWith('http://') && !query.startsWith('https://')) {
                 query = 'https://' + query; 
             }
+            // Redirect to the URL
             window.location.href = query;
         } else {
-            let search_result = "https://www.google.com/search?q=" + search_box.value;
+            let search_result = "https://www.google.com/search?q=" + encodeURIComponent(search_box.value);
+            // Redirect to the search result
             window.location.href = search_result;
         }
-        search_box.value = "";
-
+        search_box.value = ""; // Clear the search box
     }
 };
 
