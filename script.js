@@ -6,11 +6,8 @@ let loader = document.querySelector(".loader");
 window.onload = function() {
     loader.style.display = "none";
 
-    // Check if the page has been refreshed in this session
-    if (!sessionStorage.getItem('hasRefreshed')) {
-        sessionStorage.setItem('hasRefreshed', 'true'); // Set a flag in session storage
-        window.location.reload(); // Refresh the page
-    }
+    // Automatically refresh the page
+    location.reload(); // This will cause an infinite loop of refreshes
 };
 
 search_btn.onclick = function(event) {
