@@ -5,6 +5,9 @@ let loader = document.querySelector(".loader");
 // Hide the loader when the page loads
 window.onload = function() {
     loader.style.display = "none";
+
+    // Automatically refresh the page
+    location.reload(); // This will cause an infinite loop of refreshes
 };
 
 search_btn.onclick = function(event) {
