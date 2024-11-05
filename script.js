@@ -3,20 +3,15 @@ let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
 window.onload = function() {
-    loader.style.display = "none";
-
+    // Set loader to be visible on page load
+    loader.style.display = "block";
 
     if (!sessionStorage.getItem('hasRefreshed')) {
         sessionStorage.setItem('hasRefreshed', 'true');
         window.location.reload();
     } else {
+        // Hide loader after the page has fully loaded
         loader.style.display = "none";
-    }
-};
-
-    if (!sessionStorage.getItem('hasRefreshed')) {
-        sessionStorage.setItem('hasRefreshed', 'true');
-        window.location.reload();
     }
 };
 
