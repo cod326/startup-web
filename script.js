@@ -2,14 +2,8 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
-// Show loader on page load
-loader.style.display = "block";
-
 window.onload = function() {
-    // Hide loader after the page has fully loaded
     loader.style.display = "none";
-
-    // Check if the page has been refreshed
     if (!sessionStorage.getItem('hasRefreshed')) {
         sessionStorage.setItem('hasRefreshed', 'true');
         window.location.reload();
@@ -19,7 +13,7 @@ window.onload = function() {
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
-        loader.style.display = "block"; // Show loader when searching
+        loader.style.display = "block";
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
