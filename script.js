@@ -2,23 +2,24 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
-window.onload = function() {
-    // Set loader to be visible on page load
-    loader.style.display = "block";
+// Show loader on page load
+loader.style.display = "block";
 
+window.onload = function() {
+    // Hide loader after the page has fully loaded
+    loader.style.display = "none";
+
+    // Check if the page has been refreshed
     if (!sessionStorage.getItem('hasRefreshed')) {
         sessionStorage.setItem('hasRefreshed', 'true');
         window.location.reload();
-    } else {
-        // Hide loader after the page has fully loaded
-        loader.style.display = "none";
     }
 };
 
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
-        loader.style.display = "block";
+        loader.style.display = "block"; // Show loader when searching
 
         let query = search_box.value;
         if (!search_box.value.includes(' ') && search_box.value.includes('.')) {
