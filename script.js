@@ -2,14 +2,6 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
-window.onload = function() {
-    loader.style.display = "none";
-    if (!sessionStorage.getItem('hasRefreshed')) {
-        sessionStorage.setItem('hasRefreshed', 'true');
-        window.location.reload();
-    }
-};
-
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
