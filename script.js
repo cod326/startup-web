@@ -18,6 +18,7 @@ search_btn.onclick = function(event) {
             window.location.href = search_result;
         }
         search_box.value = "";
+        loader.style.display = "none";
     }
 };
 
