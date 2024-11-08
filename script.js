@@ -25,7 +25,7 @@ window.addEventListener('beforeunload', function() {
     if (loader.style.display !== 'none') {
         setTimeout(()=>{
         loader.style.display = 'none';
-        },1000);
+        },2500);
     }
 });
 function loadShortcuts() {
