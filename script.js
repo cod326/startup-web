@@ -23,9 +23,9 @@ search_btn.onclick = function(event) {
 };
 window.addEventListener('beforeunload', function() {
     if (loader.style.display !== 'none') {
-        setTimeout()=>{
+        setTimeout(()=>{
         loader.style.display = 'none';
-        }
+        },3000);
     }
 });
 function loadShortcuts() {
