@@ -2,6 +2,15 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
+window.onload = function() {
+    loader.style.display = "none";
+
+    if (!sessionStorage.getItem('hasRefreshed')) {
+        sessionStorage.setItem('hasRefreshed', 'true');
+        window.location.reload();
+    }
+};
+
 search_btn.onclick = function(event) {
     event.preventDefault();
     if (search_box.value !== "") {
@@ -18,7 +27,6 @@ search_btn.onclick = function(event) {
             window.location.href = search_result;
         }
         search_box.value = "";
-        loader.style.display = "none";
     }
 };
 
@@ -65,6 +73,10 @@ function shortcut_btn() {
     }
 
     add_btn.onclick = () => {
+        let shortcutUrlValue = shortcutUrl.value;
+        if(!shortcutUrlValue.startsWith('https://') && !shortcutUrlValue.startsWith('http://')){
+            shortcutUrl.value = 'https://' + shortcutUrlValue;
+        }
         const name = shortcutName.value.trim();
         const url = shortcutUrl.value.trim();
 
