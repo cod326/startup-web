@@ -6,7 +6,7 @@ window.onload = function() {
     loader.style.display = "none";
 
     if (!sessionStorage.getItem('hasRefreshed')) {
-        sessionStorage.setItem('hasRefreshed', 'true');
+        sessionStorage.setItem('hasRefreshed', 'false');
         window.location.reload();
     }
 };
