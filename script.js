@@ -2,14 +2,6 @@ let search_box = document.getElementById("search_box");
 let search_btn = document.getElementById("search_btn");
 let loader = document.querySelector(".loader");
 
-window.onload = function() {
-    loader.style.display = "none";
-
-    if (!sessionStorage.getItem('hasRefreshed')) {
-        sessionStorage.setItem('hasRefreshed', 'false');
-        window.location.reload();
-    }
-};
 
 search_btn.onclick = function(event) {
     event.preventDefault();
@@ -29,7 +21,11 @@ search_btn.onclick = function(event) {
         search_box.value = "";
     }
 };
-
+window.addEventListener('beforeunload', function() {
+    if (loader.style.display !== 'none') {
+        loader.style.display = 'none';
+    }
+});
 function loadShortcuts() {
     const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
     const allShortcutContainer = document.querySelector("#all_shortcut_icons");
